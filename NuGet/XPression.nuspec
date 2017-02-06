@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>XPression</id>
+    <version>$version$</version>
+    <authors>Jaap Lamfers</authors>
+    <owners>Jaap Lamfers</owners>
+    <projectUrl>https://github.com/jlamfers/XPression</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Stack based Expression builder and compiler.</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Parser Compiler DSL OData QueryString ScriptBuilder Script LINQ EntityFramework Entities Geo spatial</tags>
+<dependencies>
+    </dependencies>	
+  </metadata>
+  <files>
+	<file src="XPression.dll" target="lib/net45/XPression.dll"/>
+  </files>
+</package>

@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DF533036-CCDC-4FD6-9F26-FFC7F1A36303}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XPression</RootNamespace>
+    <AssemblyName>XPression</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="CompactParser.cs" />
+    <Compile Include="Core\Associativity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\ASTBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\ConstantParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\OrderExpression.cs" />
+    <Compile Include="Core\TypeResolver.cs" />
+    <Compile Include="Core\VariablesSpace.cs" />
+    <Compile Include="Core\ExpressionExtensions.cs" />
+    <Compile Include="Core\CommonExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Functions\FunctionBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Functions\FunctionFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Functions\FunctionMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Functions\FunctionSignature.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Functions\IFunctionBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\BaseGrammar.cs" />
+    <Compile Include="Core\IGrammar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\ILexer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\ImplicitNumericConversionsTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\MemberHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\MemberTokens.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\OperatorInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\ShuntingYard\IShuntingYardOutput.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\ShuntingYard\ShuntingYardASTOutput.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\ShuntingYard\ShuntingYardParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\ShuntingYard\ShuntingYardRPNOutput.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Scanner.cs" />
+    <Compile Include="Core\ExpressionSimplifier.cs" />
+    <Compile Include="Core\Tokenizer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Tokens\LiteralToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Tokens\ExpressionToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Tokens\FunctionToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Tokens\SegmentedIdentifierToken.cs" />
+    <Compile Include="Core\Tokens\Token.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Tokens\TokenExtension.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Tokens\TokenType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\TypeParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\XPressionException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Parser.cs" />
+    <Compile Include="Language\FunctionBuilders\ElseBuilder.cs" />
+    <Compile Include="Language\Syntax\BaseSyntax.cs" />
+    <Compile Include="Language\Syntax\Defaults.cs" />
+    <Compile Include="Language\Syntax\DefaultSyntaxExtender.cs" />
+    <Compile Include="Language\Syntax\IAutoSyntaxExtender.cs" />
+    <Compile Include="Core\AppDomainExtension.cs" />
+    <Compile Include="Language\Syntax\ISyntaxExtender.cs" />
+    <Compile Include="Language\Syntax\ScriptMethodAttribute.cs" />
+    <Compile Include="Language\Syntax\ScriptSyntax.cs" />
+    <Compile Include="Language\FunctionBuilders\IffBuilder.cs" />
+    <Compile Include="Language\FunctionBuilders\IsofBuilder.cs" />
+    <Compile Include="MathParser.cs" />
+    <Compile Include="ODataParser.cs" />
+    <Compile Include="ScriptParser.cs" />
+    <Compile Include="QueryParser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Language\Syntax\CompactSyntax.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Language\FunctionBuilders\CastBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Language\FunctionBuilders\FormatBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Language\FunctionBuilders\TotalOffsetMinutesBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Language\Grammar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Language\Syntax\ISyntax.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Language\Lexer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Language\Syntax\MathSyntax.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Language\Syntax\ODataSyntax.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Language\Syntax\QuerySyntax.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Language\Syntax\SyntaxExtension.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Language\TokenList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="license.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)Nuget</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

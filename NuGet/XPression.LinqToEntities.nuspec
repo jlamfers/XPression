@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package > 
+  <metadata>
+    <id>XPression.LinqToEntities</id>
+    <version>$version$</version>
+    <authors>Jaap Lamfers</authors>
+    <owners>Jaap Lamfers</owners>
+    <projectUrl>https://github.com/jlamfers/XPression</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Extended LINQ support for XPression</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Parser Compiler DSL OData QueryString ScriptBuilder Script LINQ EntityFramework Entities Geo spatial</tags>
+    <dependencies>
+      <dependency id="EntityFramework" version="6.1.1" />
+      <dependency id="XPression" version="$version$" />
+    </dependencies>
+  </metadata>
+  <files>
+	<file src="XPression.LinqToEntities.dll" target="lib/net45/XPression.LinqToEntities.dll"/>
+  </files>
+</package>
