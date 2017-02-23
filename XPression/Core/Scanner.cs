@@ -17,12 +17,14 @@ Copyright 2017 - Jaap Lamfers - jlamfers@xipton.net
 #endregion
 
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace XPression.Core
 {
    public class Scanner
    {
+      private static readonly HashSet<char> DEFAULT_SPACES = new HashSet<char>(new[]{' ','\r','\n','\t'}); 
       public const char NULLCHAR = '\0';
       public const int EOF = -1;
 
@@ -36,21 +38,12 @@ namespace XPression.Core
          _source = source;
       }
 
-      public void SkipSpaces()
+      public void SkipSpaces(ICollection<char> spaces)
       {
-         while (true)
+         spaces = spaces ?? DEFAULT_SPACES;
+         while (spaces.Contains(PeekChar()))
          {
-            switch (PeekChar())
-            {
-               case ' ':
-               case '\t':
-               case '\n':
-               case '\r':
-                  _position++;
-                  break;
-               default:
-                  return;
-            }
+            _position++;
          }
       }
 

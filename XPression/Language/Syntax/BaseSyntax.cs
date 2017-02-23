@@ -70,6 +70,7 @@ namespace XPression.Language.Syntax
          KnownTypes = KnownTypes.CastTo<Dictionary<string, TypeParser>>().AsReadOnly();
          ImplementsVariables = Symbols.Values.Any(v => v == TokenType.Declaration) || SyntaxChars.Values.Any(v => v == TokenType.Declaration);
          IdentifierDelimiter = (char)SyntaxChars.Where(kv => kv.Value == TokenType.IdentifierDelimiter).Select(kv => kv.Key).FirstOrDefault();
+         Spaces = Spaces ?? new HashSet<char>(new[]{' ','\r','\n','\t'});
       }
 
 
@@ -77,6 +78,8 @@ namespace XPression.Language.Syntax
       public bool IgnoreCase { get; private set; }
 
       public IEqualityComparer<string> StringEqualityComparer { get; private set; }
+
+      public ICollection<char> Spaces { get; protected set; }
 
       public char Quote { get; protected set; }
 

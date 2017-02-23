@@ -140,11 +140,13 @@
     <Compile Include="Language\Syntax\IAutoSyntaxExtender.cs" />
     <Compile Include="Core\AppDomainExtension.cs" />
     <Compile Include="Language\Syntax\ISyntaxExtender.cs" />
+    <Compile Include="Language\Syntax\UrlSyntax.cs" />
     <Compile Include="Language\Syntax\ScriptMethodAttribute.cs" />
     <Compile Include="Language\Syntax\ScriptSyntax.cs" />
     <Compile Include="Language\FunctionBuilders\IffBuilder.cs" />
     <Compile Include="Language\FunctionBuilders\IsofBuilder.cs" />
     <Compile Include="MathParser.cs" />
+    <Compile Include="UrlParser.cs" />
     <Compile Include="ODataParser.cs" />
     <Compile Include="ScriptParser.cs" />
     <Compile Include="QueryParser.cs" />

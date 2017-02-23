@@ -25,6 +25,7 @@ namespace XPression.Language.Syntax
 {
    public interface ISyntax
    {
+      ICollection<char> Spaces { get; }
       char Quote { get; }
       char IdentifierDelimiter { get; }
       char LineComment { get; }

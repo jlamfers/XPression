@@ -16,26 +16,18 @@ Copyright 2017 - Jaap Lamfers - jlamfers@xipton.net
  * */
 #endregion
 
-namespace XPression.Language.Syntax
+using XPression.Core;
+using XPression.Language;
+using XPression.Language.Syntax;
+
+namespace XPression
 {
-   public class QuerySyntax : QuerySyntax<DefaultSyntaxExtender>
+   public class UrlParser : Parser
    {
-
-   }
-   public class ODataSyntax : ODataSyntax<DefaultSyntaxExtender>
-   {
-
-   }
-   public class MathSyntax : MathSyntax<DefaultSyntaxExtender>
-   {
-
-   }
-   public class CompactSyntax : CompactSyntax<DefaultSyntaxExtender>
-   {
-
-   }
-   public class UrlSyntax : UrlSyntax<DefaultSyntaxExtender>
-   {
-
+      public UrlParser()
+         : base(new Grammar(UrlSyntax.Instance){Strict = false} )
+      {
+         
+      }
    }
 }

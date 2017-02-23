@@ -60,7 +60,7 @@ namespace XPression.Language
 
             while (!tokenizer.Eof())
             {
-               tokenizer.SkipSpaces();
+               tokenizer.SkipSpaces(_syntax.Spaces);
 
                if (tokenizer.Eof())
                {
