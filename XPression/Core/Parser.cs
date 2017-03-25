@@ -67,6 +67,22 @@ namespace XPression.Core
       /// </summary>
       public IGrammar Grammar { get; private set; }
 
+      public Expression Parse(string expression, Type inputType, Type resultType)
+      {
+         if (expression == null) throw new ArgumentNullException("expression");
+         if (inputType == null) throw new ArgumentNullException("inputType");
+         if (resultType == null) throw new ArgumentNullException("resultType");
+
+         var tokens = Grammar.Lexer.Tokenize(expression);
+
+         return _shuntingYard.BuildAST(tokens, inputType, resultType);
+      }
+      public Expression Parse(string expression, Type inputType)
+      {
+         return Parse(expression, inputType, typeof (object));
+      }
+
+
       /// <summary>
       /// Parses the source, and returns an expression tree
       /// </summary>
@@ -76,12 +92,9 @@ namespace XPression.Core
       /// <returns></returns>
       public Expression<Func<T, TResult>> Parse<T,TResult>(string expression)
       {
-         if (expression == null) throw new ArgumentNullException("expression");
-
-         var tokens = Grammar.Lexer.Tokenize(expression);
-
-         return _shuntingYard.BuildAST<T, TResult>(tokens);
+         return (Expression<Func<T, TResult>>)Parse(expression, typeof(T), typeof(TResult));
       }
+
       public Expression<Func<T, object>> Parse<T>(string expression)
       {
          return Parse<T, object>(expression);

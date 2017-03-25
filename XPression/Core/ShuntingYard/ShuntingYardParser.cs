@@ -173,30 +173,35 @@ namespace XPression.Core.ShuntingYard
 
       public Expression<Func<T, TResult>> BuildAST<T, TResult>(IEnumerable<Token> input)
       {
-         var p = Expression.Parameter(typeof(T), "p");
+         return (Expression<Func<T, TResult>>)BuildAST(input, typeof(T), typeof(TResult));
+      }
+
+      public Expression BuildAST(IEnumerable<Token> input, Type inputType, Type resultType)
+      {
+         var p = Expression.Parameter(inputType, "p");
          var output = new ShuntingYardASTOutput(_astBuilder, p);
          Parse(input, output);
 
          var ast = output.GetResultAST();
 
-         if (typeof(TResult).IsValueType && !typeof(TResult).IsNullable() && ast.IsNullConstant())
+         if (resultType.IsValueType && !resultType.IsNullable() && ast.IsNullConstant())
          {
-            ast = Expression.Convert(ast, typeof(Nullable<>).MakeGenericType(typeof(TResult)));
+            ast = Expression.Convert(ast, typeof(Nullable<>).MakeGenericType(resultType));
          }
 
-         if (typeof(TResult).EnsureNotNullable() == ast.Type.EnsureNotNullable())
+         if (resultType.EnsureNotNullable() == ast.Type.EnsureNotNullable())
          {
-            if (typeof(TResult).IsValueType && ast.Type.IsNullable() && !typeof(TResult).IsNullable())
+            if (resultType.IsValueType && ast.Type.IsNullable() && !resultType.IsNullable())
             {
                ast = Expression.Call(ast, ast.Type.GetMethod("GetValueOrDefault", Type.EmptyTypes));
             }
          }
          else
          {
-            ast = Expression.Convert(ast, typeof(TResult));
+            ast = Expression.Convert(ast, resultType);
          }
 
-         return Expression.Lambda<Func<T, TResult>>(ast, p);
+         return Expression.Lambda(ast, p);
       }
    }
 }

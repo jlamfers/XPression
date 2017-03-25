@@ -24,7 +24,7 @@ using XPression.Core.Tokens;
 
 namespace XPression.Core
 {
-   public static class CommonExtensions
+   internal static class CommonExtensions
    {
       public static T CastTo<T>(this object self)
       {

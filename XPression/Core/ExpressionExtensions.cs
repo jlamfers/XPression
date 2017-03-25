@@ -21,7 +21,7 @@ using System.Linq.Expressions;
 
 namespace XPression.Core
 {
-   public static class ExpressionExtensions
+   internal static class ExpressionExtensions
    {
       public static Expression Trim(this Expression node)
       {
@@ -58,7 +58,7 @@ namespace XPression.Core
       }
       public static Expression Convert(this Expression node, Type type)
       {
-         return node.Type != type ? Expression.Convert(node.Trim() , type) : node;
+         return node.Type != type ? Expression.Convert(node , type) : node;
       }
       public static Expression AsConstant<T>(this object value)
       {
